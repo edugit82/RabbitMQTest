@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQTest", "RabbitMQTest\RabbitMQTest.csproj", "{77B796B8-E817-498E-B0C2-EEBA02E10DCC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77B796B8-E817-498E-B0C2-EEBA02E10DCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77B796B8-E817-498E-B0C2-EEBA02E10DCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77B796B8-E817-498E-B0C2-EEBA02E10DCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77B796B8-E817-498E-B0C2-EEBA02E10DCC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7FD91D0E-002B-406A-BD51-E123EEEEAFEB}
+	EndGlobalSection
+EndGlobal
