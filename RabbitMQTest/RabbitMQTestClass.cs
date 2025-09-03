@@ -19,8 +19,8 @@ namespace RabbitMQTest
             {
                 ConnectionFactory factory = new ConnectionFactory();
                 factory.HostName = "20.55.233.251"; // Or the IP address of your RabbitMQ server
-                factory.UserName = "userrabbitmq";     // Or your configured username
-                factory.Password = "wL8@bE1#";     // Or your configured password
+                factory.UserName = "edco82_rabbitmq";     // Or your configured username
+                factory.Password = "sU6#pf2@";     // Or your configured password
                 factory.VirtualHost = "/";      // Or your desired virtual host
 
                 // this name will be shared by all connections instantiated by

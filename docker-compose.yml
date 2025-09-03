@@ -1,0 +1,28 @@
+# docker-compose.yml
+services:
+    
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq_container
+    hostname: rabbitmq
+    ports:
+      - "5672:5672" # AMQP protocol port
+      - "15672:15672" # Management UI port
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq # Persistent data volume
+    restart: unless-stopped    
+      
+  nginx:
+    image: nginx:latest
+    container_name: nginx_container
+    ports:
+      - "80:80"
+    volumes:
+      - ./html:/usr/share/nginx/html      
+    restart: unless-stopped 
+
+volumes:  
+  rabbitmq_data:  
