@@ -81,11 +81,14 @@ namespace RabbitMQTest
             Debug.WriteLine(" [*] Waiting for messages.");
 
             var consumer = new AsyncEventingBasicConsumer(channel);
+            int i = 0; ;
             consumer.ReceivedAsync += (model, ea) =>
             {
                 var body = ea.Body.ToArray();
                 var message = Encoding.UTF8.GetString(body);
                 Debug.WriteLine($" [x] Received {message}");
+                Debug.WriteLine($" Pos: {i:00}");
+                i++;
                 return Task.CompletedTask;
             };
 
