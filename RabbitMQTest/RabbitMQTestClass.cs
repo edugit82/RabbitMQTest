@@ -18,7 +18,7 @@ namespace RabbitMQTest
             try
             {
                 ConnectionFactory factory = new ConnectionFactory();
-                factory.HostName = "20.55.233.251"; // Or the IP address of your RabbitMQ server
+                factory.HostName = "68.211.177.16"; // Or the IP address of your RabbitMQ server
                 factory.UserName = "edco82_rabbitmq";     // Or your configured username
                 factory.Password = "sU6#pf2@";     // Or your configured password
                 factory.VirtualHost = "/";      // Or your desired virtual host
@@ -58,14 +58,14 @@ namespace RabbitMQTest
                 Debug.WriteLine($"Exception: {ex.Message}");
             }
         }
-        private async Task Sender()
+        private async Task Sender(int pos)
         {
             // Your message sending logic here
 
             if (this.channel is null)
                 return;
 
-            const string message = "Hello World!";
+            string message = $"Hello World! {pos:00}";
             var body = Encoding.UTF8.GetBytes(message);
 
             await channel.BasicPublishAsync(exchange: string.Empty, routingKey: "hello", body: body);
@@ -103,7 +103,7 @@ namespace RabbitMQTest
         [Fact]
         public async Task ESender()
         {
-            await Sender();
+            await Sender(0);
         }
         [Fact]
         public async Task EReceiver()
@@ -119,12 +119,34 @@ namespace RabbitMQTest
         [Fact]
         public async Task FullTest()
         {
+            int intervalo = 10000;
+
             await OpenConnection();
-            await Task.Delay(5000); // Wait for a while to receive messages
-            await Sender();
-            await Task.Delay(5000); // Wait for a while to receive messages
+            await Task.Delay(intervalo); // Wait for a while to receive messages
+            await Sender(0);
+            await Task.Delay(intervalo); // Wait for a while to receive messages
             await Receiver();
-            await Task.Delay(5000); // Wait for a while to receive messages
+            await Task.Delay(intervalo); // Wait for a while to receive messages
+            await CloseConnection();
+        }
+        
+        [Fact]
+        public async Task Enviar() 
+        {   
+            for (var i = 0; i < 10; i++)
+            {
+                await OpenConnection();
+                await Sender(i);
+                await Task.Delay(1000);
+                await CloseConnection();
+            }            
+        }
+
+        [Fact]
+        public async Task Receber()
+        {
+            await OpenConnection();
+            await Receiver();
             await CloseConnection();
         }
     }
